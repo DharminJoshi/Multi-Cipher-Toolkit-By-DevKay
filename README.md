@@ -141,6 +141,27 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
+## © Copyright Disclaimer:
+
+This project, **Multi-Cipher-Toolkit-By-DevKay**, is intended for educational and personal use only. All content, including code, images, and resources, are used under the principle of fair use. The project is a non-commercial, open-source endeavor created for learning purposes and is not associated with any official or commercial entity.
+
+All trademarks, logos, and brand names mentioned or used in this project are the property of their respective owners. This project does not claim ownership of any of these trademarks, logos, or brand names.
+
+The project is provided "as is" without any warranties, express or implied. The creator of this project is not responsible for any direct or indirect consequences arising from its use.
+
+This project belongs to **DharminJoshi/DevKay** and is hosted on GitHub.
+
+---
+
+## ⚠️ Disclaimer
+
+This project is intended **only for educational and personal use**.  
+All source code, content, and references belong to their rightful owners.
+
+> Provided "as is" — the developer assumes no liability for any misuse or consequences.
+
+---
+
 ## Contact
 
 For questions or feedback, please reach out:
