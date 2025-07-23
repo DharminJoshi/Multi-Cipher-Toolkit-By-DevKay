@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multi Cipher Toolkit By DevKay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+        .form-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 0 12px rgba(0,0,0,0.05);
+        }
+        .form-label i {
+            margin-right: 6px;
+        }
+        .result-box {
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+    .social-icon {
+        color: #000; /* Default color */
+        transition: color 0.3s ease;
+    }
+
+    .social-icon:hover {
+        color: hsl(250, 65%, 65%);
+    }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">🧠 Multi Cipher Toolkit By DevKay 🔐</h2>
+
+        <div class="form-section mx-auto" style="max-width: 700px;">
+            <form method="post">
+                <div class="mb-3">
+                    <label for="cipher" class="form-label"><i class="bi bi-shield-lock"></i> Select Cipher:</label>
+                    <select name="cipher" id="cipher" class="form-select" onchange="showFields()" required>
+                        <option value="caesar">Caesar</option>
+                        <option value="mono">Monoalphabetic</option>
+                        <option value="playfair">Playfair</option>
+                        <option value="hill">Hill (2x2)</option>
+                        <option value="railfence">Rail Fence</option>
+                        <option value="columnar">Columnar Transposition</option>
+                        <option value="homophonic">Homophonic Substitution</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><i class="bi bi-toggle2-on"></i> Mode:</label>
+                    <select name="mode" class="form-select" required>
+                        <option value="encrypt">Encrypt</option>
+                        <option value="decrypt">Decrypt</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="text" class="form-label"><i class="bi bi-pencil-square"></i> Input Text:</label>
+                    <textarea name="text" id="text" class="form-control" rows="4" placeholder="Type your message here..." required></textarea>
+                </div>
+
+                <div class="mb-3" id="shiftField" style="display: none;">
+                    <label for="shift" class="form-label"><i class="bi bi-arrow-right-circle"></i> Shift (Caesar):</label>
+                    <input type="number" name="shift" id="shift" class="form-control" placeholder="e.g. 3">
+                </div>
+
+                <div class="mb-3" id="keywordField" style="display: none;">
+                    <label for="keyword" class="form-label"><i class="bi bi-key"></i> Keyword:</label>
+                    <input type="text" name="keyword" id="keyword" class="form-control" placeholder="e.g. secret">
+                </div>
+
+                <div class="mb-3" id="railsField" style="display: none;">
+                    <label for="rails" class="form-label"><i class="bi bi-ladder"></i> Number of Rails:</label>
+                    <input type="number" name="rails" id="rails" class="form-control" placeholder="e.g. 3" min="2">
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" name="preserve_case" id="preserve_case" class="form-check-input">
+                    <label class="form-check-label" for="preserve_case">Preserve Case (Caesar only)</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    <i class="bi bi-play-circle"></i> Run Cipher
+                </button>
+            </form>
+        </div>
+
+        {% if output %}
+<div class="alert alert-success mt-4 shadow-sm" role="alert">
+    <div class="d-flex justify-content-between align-items-center">
+        <h5 class="alert-heading mb-0"><i class="bi bi-lightbulb"></i> Output:</h5>
+        <button onclick="copyOutput()" class="btn btn-sm btn-outline-dark">
+            <i class="bi bi-clipboard"></i> Copy
+        </button>
+    </div>
+    <hr>
+    <pre id="outputText" class="mb-0">{{ output }}</pre>
+</div>
+{% endif %}
+
+<hr class="mt-5 mb-4">
+
+<div class="text-center">
+    <div class="text-center mt-5">
+        <h4 class="mb-3 fw-semibold">Connect With Me</h4>
+        <div class="d-flex justify-content-center gap-4 fs-4">
+            <a href="https://www.linkedin.com/in/dharmin-joshi-3bab42232" target="_blank" aria-label="LinkedIn" class="social-icon">
+                <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://www.instagram.com/devkay._/" target="_blank" aria-label="Instagram" class="social-icon">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@devkay69" target="_blank" aria-label="YouTube" class="social-icon">
+                <i class="bi bi-youtube"></i>
+            </a>
+            <a href="https://www.fiverr.com/s/NN8356o" target="_blank" aria-label="Fiverr" class="social-icon">
+                <i class="bi bi-briefcase-fill"></i>
+            </a>
+            <a href="https://discord.gg/TsChJGSwk6" target="_blank" aria-label="Discord" class="social-icon">
+                <i class="bi bi-discord"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<footer class="text-center mt-5 py-4 border-top" style="color: #555;">
+    <p class="mb-2">
+        Developed by: <strong>Dharmin Joshi / DevKay</strong>
+    </p>
+    <a href="https://github.com/DharminJoshi" target="_blank" aria-label="GitHub" class="social-icon" style="font-size: 1.5rem;">
+        <!-- GitHub SVG Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16" width="24" height="24">
+            <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.007-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.58.82-2.14-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82a7.65 7.65 0 012 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.14 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.19 0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+    </a>
+</footer>
+    </div>
+
+    <!-- Bootstrap JS and icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <script>
+        function showFields() {
+            const cipher = document.getElementById("cipher").value;
+            document.getElementById("shiftField").style.display = cipher === "caesar" ? "block" : "none";
+            document.getElementById("keywordField").style.display = ["mono", "playfair", "columnar"].includes(cipher) ? "block" : "none";
+            document.getElementById("railsField").style.display = cipher === "railfence" ? "block" : "none";
+        }
+
+        document.addEventListener("DOMContentLoaded", showFields);
+
+        function copyOutput() {
+            const text = document.getElementById("outputText").innerText;
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    alert("✅ Output copied to clipboard!");
+                })
+                .catch(err => {
+                    alert("❌ Failed to copy text.");
+                    console.error(err);
+                });
+        }
+
+    </script>
+</body>
+</html>
